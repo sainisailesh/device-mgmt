@@ -8,7 +8,7 @@ import { Device } from './device';
 })
 export class DeviceService {
 
-  private baseUrl = "http://localhost:8080/api/v1";
+  private baseUrl = "http://localhost:8080/devicemgmt/api/v1";
 
   constructor(private http: HttpClient) { }
 

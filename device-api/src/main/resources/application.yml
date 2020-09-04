@@ -1,4 +1,6 @@
-
+server:
+  servlet:
+    context-path: /devicemgmt
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
