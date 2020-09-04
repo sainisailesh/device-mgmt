@@ -3,11 +3,6 @@ package com.mycompany.devicemgmt.dto;
 import java.util.Objects;
 import java.util.Set;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class DeviceOwnerDto {
     private Long ownerId;
 	
@@ -15,9 +10,31 @@ public class DeviceOwnerDto {
 	
 	private String emailId;
 	
-	private Set<DeviceDto> devices ;
-	
-	 @Override
+	 public Long getOwnerId() {
+		return ownerId;
+	}
+
+	public void setOwnerId(Long ownerId) {
+		this.ownerId = ownerId;
+	}
+
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+
+	public String getEmailId() {
+		return emailId;
+	}
+
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+
+	@Override
 	 public boolean equals(final Object obj) {
 		 if(this == obj) {
 			 return true;

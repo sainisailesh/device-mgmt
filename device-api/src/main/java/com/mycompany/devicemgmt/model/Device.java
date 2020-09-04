@@ -1,7 +1,8 @@
 package com.mycompany.devicemgmt.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -14,14 +15,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 @Entity
 @Table(name = "device")
 public class Device {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long deviceId;
@@ -29,11 +26,43 @@ public class Device {
 	private String deviceName;
 
 	private String deviceType;
-
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL})
+	
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "deviceOwnerMap", joinColumns = { @JoinColumn(name = "deviceId") }, inverseJoinColumns = {
 			@JoinColumn(name = "ownerId") })
-	private Set<DeviceOwner> deviceOwners;
+	private List<DeviceOwner> deviceOwners = new ArrayList<>();
+	
+	public Long getDeviceId() {
+		return deviceId;
+	}
+
+	public void setDeviceId(Long deviceId) {
+		this.deviceId = deviceId;
+	}
+
+	public String getDeviceName() {
+		return deviceName;
+	}
+
+	public void setDeviceName(String deviceName) {
+		this.deviceName = deviceName;
+	}
+
+	public String getDeviceType() {
+		return deviceType;
+	}
+
+	public void setDeviceType(String deviceType) {
+		this.deviceType = deviceType;
+	}
+
+	public List<DeviceOwner> getDeviceOwners() {
+		return deviceOwners;
+	}
+
+	public void setDeviceOwners(List<DeviceOwner> deviceOwners) {
+		this.deviceOwners = deviceOwners;
+	}
 
 	@Override
 	public boolean equals(final Object obj) {
@@ -46,6 +75,11 @@ public class Device {
 	@Override
 	public int hashCode() {
 		return Objects.hashCode(deviceId);
+	}
+	
+	@Override
+	public String toString() {
+		return "deviceId: " + deviceId + " ---- " + deviceOwners;
 	}
 
 }

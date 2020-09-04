@@ -1,22 +1,13 @@
 package com.mycompany.devicemgmt.model;
 
 import java.util.Objects;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 @Entity
 @Table(name = "deviceOwner")
 public class DeviceOwner {
@@ -27,9 +18,31 @@ public class DeviceOwner {
 	private String ownerName;
 
 	private String emailId;
+	
+	public Long getOwnerId() {
+		return ownerId;
+	}
 
-	@ManyToMany(mappedBy = "deviceOwners", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Device> devices;
+	public void setOwnerId(Long ownerId) {
+		this.ownerId = ownerId;
+	}
+
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+
+	public String getEmailId() {
+		return emailId;
+	}
+
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+
 
 	@Override
 	public boolean equals(final Object obj) {
@@ -42,6 +55,11 @@ public class DeviceOwner {
 	@Override
 	public int hashCode() {
 		return Objects.hashCode(ownerId);
+	}
+	
+	@Override
+	public String toString() {
+		return "deviceOwner: " + ownerId;
 	}
 
 }
