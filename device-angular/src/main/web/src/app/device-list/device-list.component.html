@@ -1,0 +1,33 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Device List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+           <th>Device Id</th>         
+           <th>Device Name</th>
+            
+            <th>Device Type</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let device of devices | async">
+           <td>{{device.deviceId}}</td>         
+           <td>{{device.deviceName}}</td>
+           
+            <td>{{device.deviceType}}</td>
+       
+       <td><button (click)="deleteDevice(device.deviceId)" class="btn btn-danger">Delete</button>
+                <button (click)="updateDevice(device.deviceId)" class="btn btn-info" style="margin-left: 10px">Update</button>
+  
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  

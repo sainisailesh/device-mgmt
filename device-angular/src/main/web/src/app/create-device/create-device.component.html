@@ -1,0 +1,28 @@
+<h3>Create Device</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Device Name</label>
+      <input type="text" class="form-control" id="devicename" required [(ngModel)]="device.deviceName" name="devicename">
+    </div>
+    <div class="form-group">
+        <label for="name">Device Details</label>
+        <input type="text" class="form-control" id="devicedetail" required [(ngModel)]="device.deviceType" name="devicedetail">
+    </div>
+	<!--
+	<div class="form-group">
+      <label for="name">Device Owner</label>
+      <input type="text" class="form-control" id="devicename" required [(ngModel)]="device.deviceowner" name="devicename">
+    </div>
+    -->
+
+    
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>submitted successfully!</h4>
+
+</div>
