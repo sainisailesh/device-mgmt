@@ -43,6 +43,16 @@ public class DeviceController {
 		return new ResponseEntity<>(deviceControllerService.getDevices(), HttpStatus.OK);
 	}
 	
+	@GetMapping("/devices/{id}")
+	public ResponseEntity<Device> getDevice(@PathVariable long id) {
+		Optional<Device> optionalDevice = deviceControllerService.getDevice(id);
+		if(optionalDevice.isPresent()) {
+			return new ResponseEntity<>(optionalDevice.get(), HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+	}
+	
 	@GetMapping("/devices/{id}/owners")
 	public ResponseEntity<List<DeviceOwner>> getDeviceOwners(@PathVariable long id) {
 		return new ResponseEntity<>(deviceService.getOwners(id), HttpStatus.OK);

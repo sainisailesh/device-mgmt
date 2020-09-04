@@ -14,5 +14,7 @@ public interface DeviceControllerService {
 	 Optional<Device> modifyDevice(Device device);
 	 
 	 void delete(Long deviceId);
+	 
+	 Optional<Device> getDevice(Long deviceId);
 
 }

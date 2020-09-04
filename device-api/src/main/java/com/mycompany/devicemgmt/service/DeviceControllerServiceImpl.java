@@ -41,5 +41,10 @@ public class DeviceControllerServiceImpl implements DeviceControllerService {
 			deviceService.delete(optionalDevice.get());
 		}
 	}
+	
+	@Override
+	public Optional<Device> getDevice(Long deviceId) {
+		return deviceService.findById(deviceId);
+	}
 
 }
